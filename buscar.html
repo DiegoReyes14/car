@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Buscar</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <header>
+      <h1 id="white">PAR</h1><h1 id="blue">KAR</h1>
+    </header>
+    <button onclick="cargar()" id="buscar" type="button" name="button">BUSCAR</button> 
+    <div class="mapa" id="mapa"> 
+      
+    </div> 
+    
+    <script>
+		window.addEventListener('load', cargar, true);
+    function cargar(){
+      latitud = parseInt(localStorage.getItem('lat'));
+      longitud = parseInt(localStorage.getItem('lon'));
+      dibujarMapa();
+    } 
+
+		function dibujarMapa(){
+			divMapa = document.getElementById('mapa');
+			lugar = {lat: latitud, lng: longitud};
+			mapa = new google.maps.Map(divMapa, {
+				center: {lat: latitud, lng: longitud},
+				zoom: 18
+			});
+
+			marcador = new google.maps.Marker({position: lugar, map: mapa});
+
+		}
+
+	</script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe4GM1_o6oWOOisYw_JTr8DYsF6JI9jRc"
+    async defer> //Falla en el API
+  </script>
+  </body>
+</html>
